@@ -1,10 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LogsComponent } from './logs/logs.component';
 import { LogFormComponent } from './log-form/log-form.component';
+import { LogService } from './services/log.service';
 
 @NgModule({
   declarations: [
@@ -14,9 +16,10 @@ import { LogFormComponent } from './log-form/log-form.component';
     LogFormComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [LogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

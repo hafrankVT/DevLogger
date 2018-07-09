@@ -1,17 +1,9 @@
-<ul class="list-group">
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-    <a href="#">Generated components:</a>
-    <span class="log-date">12/27/2018</span>
-    <i class="fa fa-remove"></i>
-  </li>
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-      <a href="#">Reticulated Splines:</a>
-      <span class="log-date">12/27/2017</span>
-      <i class="fa fa-remove"></i>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-        <a href="#">Charging Ion Cannons:</a>
-        <span class="log-date">1/30/2016</span>
-        <i class="fa fa-remove"></i>
-      </li>
+<ul class="list-group" *ngIf="loaded && logs?.length > 0">
+  <li class="list-group-item d-flex justify-content-between align-items-center" [class.list-group-item-secondary]="selectedLog === log" *ngFor="let log of logs">
+    <a (click)="onSelect(log)" href="#">{{ log.text }}</a>
+    <span class="log-date">{{ log.date }}</span>
+    <i class="fa fa-remove" (click)="onDelete(log)"></i>
 </ul>
+
+<div *ngIf="loaded && logs.length == 0"><h5>No Logs currently in system</h5></div>
+<div *ngIf="!loaded"><h5>Loading...</h5></div>
